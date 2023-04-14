@@ -39,6 +39,9 @@ h2 {
 .hrSinEstilo {
     margin: 2px;
 }
+.lblSmall {
+    font-size: small;
+}
 
 .TextMay {
     text-transform: uppercase;

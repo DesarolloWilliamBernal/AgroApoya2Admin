@@ -13,9 +13,118 @@
             <hr>
             <h1 class="TextLeft">Información de compra seleccionada</h1>
 
-            <div class="col-sm-6">
-                <div class="TargetaSeleccionar">
+            <!--Agregar compra a entrega-->
+            <div class="row" *ngIf="VerInfoWindow == true">
+                <div class="col-sm-10">
+                    <div class="row TargetaSeleccionar">
 
+                        <h3>Oferta&nbsp;{{ArrayCompra.CD_CNSCTVO}}</h3>
+
+                        <div class="col-sm-5 CentrarText">
+                            <label class="Llave">Producto:&nbsp;</label>
+                            <label class="Valor">{{ArrayCompra.Producto_ppal}}</label>
+                        </div>
+
+                        <div class="col-sm-6 CentrarText">
+                            <label class="Llave">Cliente:&nbsp;</label>
+                            <label class="Valor">{{ArrayCompra.NOMBRES_PERSONA}}
+                                {{ArrayCompra.APELLIDOS_PERSONA}}</label>
+                        </div>
+
+
+                        <div class="col-sm-12 CentrarText" *ngIf="ArrayCompra.producto_add != null">
+                            <label class="Llave">Adicionales:&nbsp;</label>
+                            <label class="Valor">{{ArrayCompra.producto_add}}</label>
+                        </div>
+
+
+                        <div class="col-12 CentrarText">
+                            <label class="Llave">Dirección:&nbsp;</label>
+                            <label class="Valor">{{ArrayCompra.DRCCION}}</label>
+                        </div>
+
+                        <div class="col-sm-6 CentrarText"
+                            [ngClass]="{'col-sm-6':ArrayCompra.producto_add != null, 'col-12': ArrayCompra.producto_add == null}">
+                            <label class="Llave">Peso producto principal:&nbsp;</label>
+                            <label class="Valor">{{ArrayCompra.peso_prod_ppal}}&nbsp;Kilogramos</label>
+                        </div>
+
+                        <div class="col-sm-6 CentrarText" *ngIf="ArrayCompra.producto_add != null">
+                            <label class="Llave">Peso productos adicionales:&nbsp;</label>
+                            <label class="Valor">{{ArrayCompra.producto_add}}&nbsp;Kilogramos</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 mt-5 justify-content-center" *ngIf="VerInfoWindow == true">
+                    <button type="button" class="btn btn-agro-prin col-12"
+                        (click)="AgregaComEntrega(ArrayCompra)">Agregar
+                        <img src="../../../../../assets/ImagenesAgroApoya2Adm/AgregarEntrega.png"
+                            class="imgAgregaEntrega" />
+                    </button>
+                </div>
+            </div>
+
+            <!--Confirma Entrega-->
+            <div class="row mt-5">
+                <div class="col-12 col-lg-6" *ngFor="let respu of ArrayEntrega; let i = index">
+                    <div class="m-1 row tarjetadetalleTrans">
+                        <div class="col-sm-4 text-center p-0">
+                            <img src="https://www.recetasnestlecam.com/sites/default/files/2021-10/arroz.jpg"
+                                class="imgTartejaDos">
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="row justify-content-center ">
+                                <div class="col-sm-11  text-center">
+                                    <h6 class="Llave">{{respu.Producto_ppal}} x {{respu.unidadesEntregar}}</h6>
+                                </div>
+                            </div>
+                            <hr class="hrSinEstilo">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label class="ValorIDOfer lblSmall"><strong>{{respu.CD_CNSCTVO}}</strong></label>
+                                    <br>
+                                    <label class="Llave lblSmall">Tipo de compra:&nbsp;</label><label
+                                        class="Valor lblSmall">{{respu.descTipoPago}}</label>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="respu.producto_add != null">
+                                <div class="col-sm-12">
+                                    <label class="Llave lblSmall">Adiciones:&nbsp;</label><br><label
+                                        class="Valor lblSmall" [innerHTML]="respu.producto_add"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label class="Llave lblSmall">Dirección Entrega:&nbsp;</label><label
+                                        class="Valor lblSmall">{{respu.DRCCION}}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label class="Llave lblSmall">Tipo pago:&nbsp;</label><label
+                                        class="Valor lblSmall">{{respu.descTipoPago}}</label>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                    <label class="Llave lblSmall text" style="color: red;">Valor total:&nbsp;</label>
+                                    <label class="Valor lblSmall" style="color: red;">{{respu.Vlor_PagarForm}}</label>
+                                </div><!--
+                                <div class="col-sm-12">
+                                    <label class="Llave lblSmall">Valor mi compra:&nbsp;</label><label
+                                        class="Valor lblSmall">{{respu.ValorPagarPrinForm}}</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="Llave lblSmall">Valor compra participantes:&nbsp;</label><label
+                                        class="Valor lblSmall">{{respu.PagoXPartiForm}}</label>
+                                </div>-->
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="displayflexAorund">
+                            <label class="BtnTarjeta">Eliminar</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -20,6 +20,11 @@ export class AdminUltMillaComponent implements OnInit {
 
   //Agrega compra a entrega
   ArrayCompra: any =[];
+  VerInfoWindow: boolean =  false;
+  ArrayEntrega: any = [];
+
+  //Acumuladora de peso
+  Peso: number = 0;
 
 
   constructor(private modalService: NgbModal,
@@ -112,17 +117,17 @@ export class AdminUltMillaComponent implements OnInit {
 
 
   InfoWindow(i: any) {
+    this.VerInfoWindow = true;
     this.ArrayCompra = this.ArrayEntregas[i];
+    console.log(this.ArrayCompra)
+    console.log(this.ArrayCompra.length)
     this.infoWindow.close();
     var NomCliente: string = '' + this.ArrayEntregas[i].NOMBRES_PERSONA + ' ' + this.ArrayEntregas[i].APELLIDOS_PERSONA;
     var CodigoOferta: string = '' + this.ArrayEntregas[i].CD_CNSCTVO;
     var Direccion: string = '' + this.ArrayEntregas[i].DRCCION;
-    var Producto: string = '' + this.ArrayEntregas[i].Producto_ppal;
     var Cantidad: string = '' + this.ArrayEntregas[i].unidadesEntregar;
-    var Peso: string = '' + this.ArrayEntregas[i].peso_prod_ppal;
 
     const Html =
-      //DivSensillo
       '<div id="Ocultar" class="gm-style-iw-d" style="max-height: 287px; max-width: 630px;">' +
       '<div id="content">' +
       '<h1 id="firstHeading" class="firstHeading">' + NomCliente + '</h1>' +
@@ -132,11 +137,7 @@ export class AdminUltMillaComponent implements OnInit {
       '<br>' +
       '<b>Dirección: </b>' + Direccion + '' +
       '<br>' +
-      '<b>Producto: </b>' + Producto + '' +
-      '<br>' +
       '<b>Cantidad: </b>' + Cantidad + ' Unidad(es)' +
-      '<br>' +
-      '<b>Peso: </b>' + Peso + ' Kilogramos' +
       '</p>' +
       '</div>' +
       '</div>' +
@@ -154,4 +155,11 @@ export class AdminUltMillaComponent implements OnInit {
     }
   }
 
+  AgregaComEntrega(item: any){
+    this.ArrayEntrega.push(item);
+    for(var i = 0; i < this.ArrayEntrega.length; i++){
+this.Peso +=   parseInt(this.ArrayEntrega[i].peso_prod_ppal)
+    }
+
+  }
 }

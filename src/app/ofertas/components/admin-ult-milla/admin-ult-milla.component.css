@@ -1,6 +1,65 @@
-.TextLeft{
+.TextLeft {
     text-align: left;
 }
-.TargetaSeleccionar{
+
+.TargetaSeleccionar {
+    padding: 10px;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+h3 {
+    text-align: center;
+    color: #397c97;
+    font-size: x-large;
+}
+
+.imgAgregaEntrega {
+    width: 32px;
+    height: 32px;
+}
+
+.tarjetadetalleTrans {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.imgTartejaDos {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .imgTartejaDos {
+        height: 100%;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        max-height: 150px;
+    }
+}
+.displayflexAorund {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+.ValorIDOfer{
+    color: #397c97;
+}
+.BtnTarjeta{
+    background-color: #397c97; 
+    padding-left: 10px; 
+    padding-right: 10px ; 
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
 }
